@@ -60,8 +60,8 @@
 * **데이터 클래스 구성** : 데이터 클래스는 총 8개 | 흔하지 않은 표지판을 대상으로 프로젝트를 제작
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
-  <img src="https://github.com/user-attachments/assets/c9cb5616-dd2a-404a-8485-ce3bc0f56a5a" alt="데이터 수집 이미지" height="300" style="width: auto;">
-  <img src="https://github.com/user-attachments/assets/c2e1d9e1-f095-4ee0-9e46-3317a52b5594" alt="데이터 클래스 구성" height="300" style="width: auto;">
+  <img src="https://github.com/user-attachments/assets/c9cb5616-dd2a-404a-8485-ce3bc0f56a5a" alt="데이터 수집 이미지" height="200" style="width: auto;">
+  <img src="https://github.com/user-attachments/assets/c2e1d9e1-f095-4ee0-9e46-3317a52b5594" alt="데이터 클래스 구성" height="200" style="width: auto;">
 </div>
 
 ## 2️⃣ 데이터 문제점 및 해결 방법
