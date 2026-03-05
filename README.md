@@ -1,7 +1,7 @@
 ## DSC 공유대학 캡스톤디자인 우수상 - 해외교통 표지판 번역 시스템
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/04ea3e45-2e11-40ae-999b-7a9ed1300409" alt="손에 든 스마트폰과 정지 표지판" height="220" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/04ea3e45-2e11-40ae-999b-7a9ed1300409" alt="손에 든 스마트폰과 정지 표지판" height="200" style="margin-right: 10px;">
   <img src="https://github.com/user-attachments/assets/548dcbfd-b8ce-4fce-b78b-2c6f8e770359" alt="교통 표지판 인식 시스템 아키텍처" height="200" style="margin-left: 10px;">
 </div>
 
