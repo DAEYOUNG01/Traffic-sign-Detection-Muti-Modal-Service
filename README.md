@@ -182,9 +182,9 @@ Yolov11이 표지판 영역을 잘라내어 전달하면, LLaVA는 단순한 분
 * 배경: 한국관광 데이터랩 통계. (2025년 1월). 2025년 1월 출입국 관광통계. 관광지식정보시스템.
 * 배경: 순고은. (2025년 1월). 해외여행도 뚜벅이로는 힘들어…렌터카 예약 '쑥’. 여행신문.
 
-<div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; margin-bottom: 20px;">
-  <img src="https://github.com/user-attachments/assets/782a346b-01db-47ea-8ee9-24d4fd27ef17" alt="수상 이미지1" width="480" height="480" style="object-fit: cover; border-radius: 8px;">
-  <img src="https://github.com/user-attachments/assets/de43f5b1-3485-4a48-bc5d-ede9c1c447fe" alt="수상 이미지2" width="480" height="480" style="object-fit: cover; border-radius: 8px;">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/782a346b-01db-47ea-8ee9-24d4fd27ef17" alt="수상 이미지1" width="400" height="400" style="margin-right: 10px;">
+  <img src="https://github.com/user-attachments/assets/de43f5b1-3485-4a48-bc5d-ede9c1c447fe" alt="수상 이미지2" width="400" height="400" style="margin-left: 10px;">
 </div>
 
 
