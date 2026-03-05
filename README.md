@@ -1,4 +1,3 @@
-# Traffic-sign-Detection-Muti-Modal-Service
 ## DSC 공유대학 캡스톤디자인 우수상 - 해외교통 표지판 번역 시스템
 
 <div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
@@ -111,12 +110,76 @@ Yolov11이 표지판을 먼저 빠르게 찾아내면, LLaVA는 해당 영역에
 
 
 ## LLaVA 
+<div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px;">
+  <img src="https://github.com/user-attachments/assets/eb0d4eb3-c0df-42c9-8961-3b947c9d4a11" alt="LLaVA 관련 논문 이미지" height="300" style="width: auto;">
+  <img src="https://github.com/user-attachments/assets/ca84ce35-e0c6-4a9f-b4f3-8cb827302a73" alt="LLaVA 아이콘 이미지" height="300" style="width: auto;">
+</div>
 
+**1️⃣ 강력한 멀티모달 추론 능력**
+CLIP 기반 이미지 인코더와 LLaMA 언어 모델을 연결한 멀티모달 구조, 시각적 지시문 데이터를 이용하여 end-to-end 방식으로 학습한 모델로 이미지를 보고 질문에 답하거나 설명을 생성하는 VQA, Image Captioning, Grounded Reasoning 등 고차원적 작업 수행 가능
 
+**2️⃣ 상황 맟춤형 심층 가이드 제공**
+Yolov11이 표지판 영역을 잘라내어 전달하면, LLaVA는 단순한 분류를 넘어 "이 표지판이 의미하는 바가 무엇인지", "어떻게 행동해야 하는지" 등 사용자의 질문에 대한 자연어 형태의 대답을 생성하여 여행자에게 깊이 있는 상호작용과 맥락적 가이드 제공
 
+## LoRA Fine-Tuning 
+본 프로젝트에서는 무거운 LLaVA 모델을 교통 표지판 도메인에 맞게 최적화하기 위해 파라미터 효율적 미세조정 기법 사용
 
+* **1️⃣ 압도적인 리소스 효율성**
+원본 파라미터를 전부 업데이트 하는 경우 메모리와 연산 비용이 너무 거대해질 수 있음. LLaVA같은 경우 대규모 모델을 효율적으로 Fine-Tunning 하기 위해서 도입. VRAM 사용량과 연산량을 최소화하면서도 비슷한 성능을 기대 가능
 
+* **2️⃣ 특정 Task(교통 표지판 해석) 특화**
+이미지 특징을 언어 모델의 임베딩 공간으로 projection하는 multi_modal_projector 모듈에서 저차원 어댑터만 학습. 이를 통해 모델 전체를 건드리지 않고도 원하는 Task(표지판 의미 파악 및 답변 생성)에 필요한 표현만 섬세하게 조절
 
+* **3️⃣ 적은 데이터로도 안정적인 수렴 (Troubleshooting)**
+전체 가중치가 아닌 adapter 파라미터만 업데이트하므로, 한정적이고 적은 데이터셋으로도 학습 과정이 불안정해지지 않고 안정적으로 수렴하는 효과 획득
+
+## 결과물 정리 
+* 영상을 업로드하는 경우 Yolov11이 먼저 표지판을 탐지 진행 ➡️ 이후 탐지된 표지판에 대해서 STT 기능을 활용하여 말을 전달 ➡️ 탐지된 표지판을 바탕으로 LLaVA가 인식한 후 정보를 사용자에게 전달 
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/83635bbc-da82-4ff2-a18e-7a4df81353a0" alt="결과 이미지 1" width="300" height="400" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/859a32b0-c8bf-44e3-a846-a12da3454d33" alt="결과 이미지 2" width="300" height="400" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/49179dbe-a932-4c44-b173-081bc02b0877" alt="결과 이미지 3" width="300" height="400" />
+    </td>
+    <td align="center">
+      <img src="https://github.com/user-attachments/assets/6dbdcff6-06a6-4ae9-a611-ed2d4b387651" alt="결과 이미지 4" width="300" height="400" />
+    </td>
+  </tr>
+</table>
+
+## 개선 방향 및 기대효과
+
+* 1️⃣ LLaVA가 아닌 Video LLaVA를 이용하여 영상 자체를 인식하여 실시간성 개선 가능성 확보
+* 2️⃣ 실제 해외 운전자 대상 운전 환경 보조로 편의성 증가. 관광 및 안전 서비스에 응용 가능
+* 3️⃣ 양방향 AI 음성 비서 구현 ➡️ STT와 LLaVA의 완전한 통합을 통해 운전자와 실시간 음성 대화가 가능한 인터렉티브 챗봇 서비스 제공
+* 4️⃣ Video-LLaVA 도입 ➡️ 단일 프레임 분석의 한계를 넘어, 영상의 연속적인 흐름과 주행 문맥 파악하는 인식 기술 적용
+* 5️⃣ 모빌리티 산업 확장성 ➡️ 운전자 보조 시스템 고도화, 관광 가이드, 교통 안전 교육 플랫폼 등 다양한 산업으로 기술 응용 및 사업화 
+
+## 참고자료
+
+* Kalchbrenner: Kalchbrenner, N., Elias, M., & Vinyals, O. (2018). Efficient neural audio synthesis. International Conference on Machine Learning, PMLR.
+* Video-LLaVA: Lin, B., Xu, P., Wang, Z., & Li, Y. (2023). Video-llava: Learning united visual representation by alignment before projection. arXiv preprint arXiv:2311.10122.
+* 성능 지표 (Rouge): Lin, C. Y. (2004). ROUGE: A package for automatic evaluation of summaries. Text summarization branches out.
+* LLaVA: Liu, H., Li, C., Wu, Q., & Lee, Y. J. (2023). Visual instruction tuning. Advances in neural information processing systems, 36, 34892–34916.
+* STT: Macháček, D., Dabre, R., & Bojar, O. (2023). Turning whisper into real-time transcription system. arXiv preprint arXiv:2307.14743.
+* 성능 지표 (Bleu): Papineni, K., Roukos, S., Ward, T., & Zhu, W. J. (2002). Bleu: a method for automatic evaluation of machine translation.
+ Proceedings of the 40th annual meeting of the Association for Computational Linguistics.
+* YOLO: Redmon, J., Divvala, S., Girshick, R., & Farhadi, A. (2016). You only look once: Unified, real-time object detection. Proceedings of the IEEE conference on computer vision and pattern recognition.
+* 배경: 한국관광 데이터랩 통계. (2025년 1월). 2025년 1월 출입국 관광통계. 관광지식정보시스템.
+* 배경: 순고은. (2025년 1월). 해외여행도 뚜벅이로는 힘들어…렌터카 예약 '쑥’. 여행신문.
+
+<div align="center" style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; margin-bottom: 20px;">
+  <img src="https://github.com/user-attachments/assets/782a346b-01db-47ea-8ee9-24d4fd27ef17" alt="수상 이미지1" width="480" height="480" style="object-fit: cover; border-radius: 8px;">
+  <img src="https://github.com/user-attachments/assets/de43f5b1-3485-4a48-bc5d-ede9c1c447fe" alt="수상 이미지2" width="480" height="480" style="object-fit: cover; border-radius: 8px;">
+</div>
 
 
 
